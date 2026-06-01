@@ -548,32 +548,85 @@ section{
 }
 
 
-/* GALLERY */
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:28px;
+/* KONTAJNER PRE CELÚ SEKCIU GALÉRIE (ABY ŠÍPKY DRŽALI NA KRAJOCH) */
+.gallery-wrapper {
+    position: relative !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    overflow: hidden !important; /* Uzamkne pretekanie kódov mimo vyhradené pole */
+    padding: 20px 0 !important;
 }
 
-.gallery img{
-    width:100%;
-    height:420px;
-
-    object-fit:cover;
-
-    border-radius:28px;
-    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
-    transition: transform 0.4s ease;
+/* GALLERY - FILMOVÝ PÁS (BEZ SEKANIA A VRACANIA SA) */
+.gallery {
+    display: flex !important;
+    gap: 20px !important;
+    width: max-content !important; /* Vynúti, aby všetky fotky boli v jednom nekonečnom rade */
+    transition: transform 0.4s ease-in-out !important; /* Plynulý posun o 1 fotku vpred */
+    will-change: transform !important;
 }
 
-.gallery img{
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+/* NASTAVENIE VEĽKOSTI OBRÁZKOV - PRESNE 6 FOTIEK NA PC */
+.gallery img {
+    width: calc((100vw - (14vw + 40px) - (5 * 20px)) / 6) !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25); /* Vaša trvalá zlatá žiara */
+    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
 }
 
 .gallery img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
+    transform: scale(1.03) !important;
+    box-shadow: 0 0 35px rgba(200, 169, 107, 0.45) !important;
+}
+
+
+/* ŠTÝL PRE EXKLUZÍVNE ZLATÉ ŠÍPKY */
+.gallery-nav-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 45px !important;
+    height: 45px !important;
+    background: rgba(5, 5, 5, 0.8) !important;
+    border: 1px solid rgba(200, 169, 107, 0.4) !important;
+    border-radius: 50% !important;
+    color: var(--gold) !important;
+    font-size: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(5px) !important;
+    user-select: none !important;
+}
+
+.gallery-nav-btn:hover {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 15px rgba(200, 169, 107, 0.6) !important;
+    background: var(--black) !important;
+}
+
+.gallery-nav-btn.prev { left: 10px !important; }
+.gallery-nav-btn.next { right: 10px !important; }
+
+/* RESPONSIVITA PRE MOBILY (Menej fotiek na obrazovke) */
+@media(max-width: 1200px) {
+    .gallery img { width: calc((100vw - (12%) - (3 * 20px)) / 4) !important; } /* 4 fotky */
+}
+
+@media(max-width: 768px) {
+    .gallery img { 
+        width: calc((100vw - (10%) - (1 * 20px)) / 2) !important; /* 2 fotky */
+        height: 180px !important;
+    }
+}
+
+@media(max-width: 480px) {
+    .gallery img { width: calc(100vw - 12%) !important; } /* 1 veľká fotka */
 }
 
 
@@ -1024,20 +1077,35 @@ Galéria
 
 </div>
 
-<div class="gallery">
+<div class="gallery-wrapper" id="galleryWrapper">
+    <!-- Tlačidlo vľavo -->
+    <div class="gallery-nav-btn prev" id="galleryPrevBtn">&#10094;</div>
+    
+    <!-- Samotná galéria s Vašimi fotkami -->
+    <div class="gallery" id="gallerySlider">
+        <img src="elektroinstalaciadom1.webp" alt="Domová elektroinštalácia novostavba">
+        <img src="elektroinstalaciadom2.webp" alt="Káblové rozvody v rodinnom dome">
+        <img src="bleskozvod1.jpg" alt="Montáž bleskozvodu">
+        <img src="bleskozvodindustrie.jpg" alt="Priemyselný bleskozvod">
+        <img src="svetla1.jpeg" alt="Montáž interiérového osvetlenia">
+        <img src="svetla2.jpeg" alt="Dizajnové LED svietidlá">
+        <img src="industrie1.jpeg" alt="Priemyselná elektroinštalácia">
+        <img src="kabelaz.jpeg" alt="Profesionálne vedenie kabeláže">
+        <img src="rohrenbau.jpeg" alt="Uloženie chráničiek a káblových trás">
+        <img src="svetla5.jpeg" alt="Exteriérové osvetlenie objektu">
+        <img src="obrázok1.jpeg" alt="Realizácia elektroinštalácie detail">
+        <img src="obrázok2.jpeg" alt="Zapojenie rozvádzača">
+        <img src="obrázok4.jpeg" alt="Elektromontážne práce v dome">
+        <img src="obrázok3.jpeg" alt="Kompletná elektrika byt">
+        <img src="obrazok6.jpeg" alt="Finálna kompletáž a revízia">
+    </div>
 
-<img src="elektroinstalaciadom1.webp" alt="">
-<img src="elektroinstalaciadom2.webp" alt="">
-<img src="bleskozvod1.jpg" alt="">
-<img src="bleskozvodindustrie.jpg" alt="">
-<img src="svetla1.jpeg" alt="">
-<img src="svetla2.jpeg" alt="">
-<img src="industrie1.jpeg" alt="">
-<img src="kabelaz.jpeg" alt="">
-<img src="rohrenbau.jpeg" alt="">
-<img src="svetla5.jpeg" alt="">
-<img src="zapajanie.jpeg" alt="">
+    <!-- Tlačidlo vpravo -->
+    <div class="gallery-nav-btn next" id="galleryNextBtn">&#10095;</div>
 </div>
+
+
+
 
 </section>
 
@@ -1106,29 +1174,90 @@ hofericacompany@gmail.com
 </a>
 
 <script>
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    const headerLogo = document.querySelector(".header-logo");
+                // INTEXTOVÁ LOGIKA PRE NEKONEČNÝ FILMOVÝ PÁS (OPRAVENÁ VERZIA)
+    const galleryContainer = document.getElementById("gallerySlider");
+    const prevButton = document.getElementById("galleryPrevBtn");
+    const nextButton = document.getElementById("galleryNextBtn");
+    const originalPics = Array.from(galleryContainer.querySelectorAll("img"));
+    const imgGap = 20; // hodnota gap z CSS
 
-    window.addEventListener("scroll", function() {
-        // Kontrola pre plynulé spustenie (akonáhle prejdeme 80px zvrchu stránky)
-        if (window.scrollY > 80) {
-            scrollToTopBtn.classList.add("show");
-            headerLogo.classList.add("show-logo");
+    // 1. Kompletné zduplikovanie všetkých 15 fotiek na koniec pre nekonečnú slučku
+    originalPics.forEach(img => {
+        const duplicateImg = img.cloneNode(true);
+        galleryContainer.appendChild(duplicateImg);
+    });
+
+    let currentImgIndex = 0;
+    let isCarouselMoving = false;
+
+    // Funkcia na presný výpočet šírky posunu (1 fotka + medzera)
+    function getSingleStepWidth() {
+        if (originalPics.length > 0) {
+            return originalPics[0].getBoundingClientRect().width + imgGap;
+        }
+        return 200;
+    }
+
+    // Hlavná funkcia pre hladký posun filmového pásu
+    function updatePásPosition() {
+        const stepWidth = getSingleStepWidth();
+        galleryContainer.style.transition = "transform 0.4s ease-in-out";
+        galleryContainer.style.transform = `translateX(-${currentImgIndex * stepWidth}px)`;
+    }
+
+    // 2. Kliknutie na pravú šípku (posun o 1 fotku vpred)
+    nextButton.addEventListener("click", () => {
+        if (isCarouselMoving) return;
+        isCarouselMoving = true;
+
+        currentImgIndex++;
+        updatePásPosition();
+
+        // Ak prejdeme za poslednú 15. fotku, potajomky a okamžite skočíme na štart bez spiatočky
+        if (currentImgIndex >= originalPics.length) {
+            setTimeout(() => {
+                galleryContainer.style.transition = "none"; // bleskovo vypne animáciu
+                currentImgIndex = 0; // vráti počítadlo na nulu
+                galleryContainer.style.transform = `translateX(0px)`; // hodí pozíciu na skutočnú 1. fotku
+                isCarouselMoving = false;
+            }, 400); // počká 0.4s na dokončenie hladkého posunu
         } else {
-            // Súčasné a koordinované spustenie prechodu pre obidva prvky smerom nadol
-            scrollToTopBtn.classList.remove("show");
-            headerLogo.classList.remove("show-logo");
+            setTimeout(() => { isCarouselMoving = false; }, 400);
         }
     });
 
-    // Akcia pre plynulý posun stránky na úplný vrch po kliknutí
-    scrollToTopBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+    // 3. Kliknutie na ľavú šípku (posun o 1 fotku vzad)
+    prevButton.addEventListener("click", () => {
+        if (isCarouselMoving) return;
+        isCarouselMoving = true;
+
+        // Ak klikneme späť na prvej fotke, skočíme potajomky na koniec a plynule cúvneme
+        if (currentImgIndex === 0) {
+            galleryContainer.style.transition = "none";
+            currentImgIndex = originalPics.length;
+            const stepWidth = getSingleStepWidth();
+            galleryContainer.style.transform = `translateX(-${currentImgIndex * stepWidth}px)`;
+            
+            setTimeout(() => {
+                currentImgIndex--;
+                updatePásPosition();
+                setTimeout(() => { isCarouselMoving = false; }, 400);
+            }, 10);
+        } else {
+            currentImgIndex--;
+            updatePásPosition();
+            setTimeout(() => { isCarouselMoving = false; }, 400);
+        }
     });
+
+    // Korekcia pozície pri zmene šírky okna (resizing)
+    window.addEventListener("resize", () => {
+        galleryContainer.style.transition = "none";
+        updatePásPosition();
+    });
+
+
+
 </script>
 
 
