@@ -252,27 +252,28 @@ header{
 }
 
 /* NAVIGATION */
-
 nav{
     display:flex;
     gap:45px;
+    align-items: center;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-
     text-transform:uppercase;
-
     letter-spacing:2px;
-
     font-size:13px;
     font-weight:600;
-
     position:relative;
-
     transition:0.4s;
+
+    /* RECEPT NA ZAROVNANIE IKONKY A TEXTU */
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important; /* Medzera medzi domčekom a textom DOMOV */
 }
+
 
 nav a:hover{
     color:var(--gold);
@@ -693,10 +694,14 @@ footer{
         width: 100% !important;
     }
 
-    nav a {
+        nav a {
         font-size: 11px !important;
         letter-spacing: 1px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
     }
+
 
     /* HERO SEKCIA - ZRUŠENIE PRETEKAJÚCEHO KRUHU */
     .hero {
