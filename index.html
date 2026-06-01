@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+
+<link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo1.png">
+<link rel="apple-touch-icon" href="logo1.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HOFERICA COMPANY</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:25px;
+}
+
+.service{
+    padding:35px;
+    border-radius:25px;
+
+    background: linear-gradient(180deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.02));
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.4s ease;
+    text-align:center;
+
+    backdrop-filter: blur(10px);
+}
+
+.service:hover{
+    transform: translateY(-10px);
+    border-color: rgba(200,169,107,0.5);
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
+}
+
+
+.service-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.service h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:28px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.service p{
+    font-size:16px;
+    color:#cfcfcf;
+    line-height:1.6;
+}
+
+/* HLAVNÉ LOGO V LIŠTE - POČIATOČNÝ STAV (SKRYTÉ) */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Nastavenie plynulého prechodu navlas rovnako ako button */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 2000;
+}
+
+/* TRIEDA PRE ZOBRAZENIE CEZ JAVASCRIPT */
+.header-logo.show-logo {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* HERO LOGO (veľké) */
+
+#heroLogo{
+
+    transition:0.6s ease;
+
+}
+
+/* STAV PRI SCROLLI */
+
+/* HLAVNÉ LOGO V LIŠTE - POČIATOČNÝ STAV (SKRYTÉ) */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2000;
+
+    /* Počiatočné skrytie */
+    opacity: 0;
+    visibility: hidden;
+
+    /* RECEPT NA PLYNULÉ ZMIZNUTIE: vynútenie prechodu pre opacity aj visibility pri odchode */
+    transition: opacity 0.4s ease, visibility 0.4s ease !important;
+}
+
+/* TRIEDA PRE ZOBRAZENIE CEZ JAVASCRIPT */
+.header-logo.show-logo {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.4s ease, visibility 0.4s ease !important;
+}
+
+
+/* TLAČIDLO V PRAVOM ROHU - POČIATOČNÝ STAV (SKRYTÉ) */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #050505; /* var(--black) */
+    border: 1px solid rgba(200, 169, 107, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(200, 169, 107, 0.3);
+    text-decoration: none;
+}
+
+.scroll-to-top img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* TRIEDA, KTORÚ JS PRIDÁ PRI SCROLLI (ZOBRAZENÉ) */
+.scroll-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.home-icon{
+    font-size:18px;
+    color:var(--gold);
+    margin-bottom:4px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --gold:#c8a96b;
+    --gold-light:#f0d8a2;
+    --black:#050505;
+}
+
+body{
+    background:var(--black);
+    color:white;
+    font-family:'Manrope', sans-serif;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left, rgba(200,169,107,0.08), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(200,169,107,0.06), transparent 30%);
+
+    pointer-events:none;
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+
+    background-size:4px 4px;
+
+    opacity:0.15;
+    z-index:-1;
+    pointer-events:none;
+}
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--gold), #866633);
+    border-radius:30px;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:30px 7%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(5,5,5,0.82);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+
+    z-index:1000;
+}
+
+/* NAVIGATION */
+
+nav{
+    display:flex;
+    gap:45px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:13px;
+    font-weight:600;
+
+    position:relative;
+
+    transition:0.4s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+nav a::after{
+    content:'';
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+    height:1px;
+
+    background:var(--gold);
+
+    transition:0.4s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:220px 8% 140px;
+
+    position:relative;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.85)),
+    url('bleskhero.avif') center/cover;
+}
+
+
+.hero::before{
+    content:'';
+
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    border:1px solid rgba(200,169,107,0.12);
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+}
+
+.hero-content{
+    max-width:1200px;
+    position:relative;
+    z-index:2;
+}
+
+/* HERO LOGO */
+
+.hero-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:35px;
+
+    margin-bottom:40px;
+
+    flex-wrap:wrap;
+}
+
+.hero-logo img{
+    width:250px;
+    height:250px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 0 25px rgba(200,169,107,0.25));
+}
+
+.hero-logo-text{
+    text-align:left;
+}
+
+.hero-logo-text h1{
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:90px;
+
+    line-height:1;
+
+    margin:0;
+
+    color:white;
+}
+
+.hero-subtitle{
+    margin-top:12px;
+
+    font-size:22px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--gold);
+}
+
+.hero p{
+    max-width:900px;
+
+    margin:auto;
+
+    color:#d6d6d6;
+
+    font-size:22px;
+
+    line-height:2;
+
+    font-weight:300;
+}
+
+/* BUTTON */
+
+.hero-btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-top:55px;
+
+    width:240px;
+    height:64px;
+
+    border:1px solid rgba(200,169,107,0.45);
+
+    color:white;
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+    transition:0.45s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero-btn:hover{
+    border-color:var(--gold);
+    box-shadow:0 0 40px rgba(200,169,107,0.15);
+}
+
+/* SECTION */
+
+section{
+    padding:150px 8%;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:90px;
+}
+
+.section-head small{
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:5px;
+
+    font-size:12px;
+}
+
+.section-head h2{
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:72px;
+
+    margin-top:18px;
+
+    font-weight:700;
+}
+
+/* ABOUT */
+
+.about{
+    max-width:1150px;
+    margin:auto;
+    text-align:center;
+}
+
+.about p{
+    font-size:22px;
+    line-height:2.2;
+    color:#cfcfcf;
+    font-weight:300;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:35px;
+}
+
+.service{
+    padding:55px;
+
+    border:1px solid rgba(200,169,107,0.3);
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(180deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.01));
+
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
+    transition:0.5s;
+}
+
+
+.service:hover{
+    transform:translateY(-12px);
+}
+
+.service-number{
+    font-size:15px;
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    margin-bottom:25px;
+}
+
+.service h3{
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:42px;
+
+    margin-bottom:35px;
+}
+
+.service ul{
+    list-style:none;
+}
+
+.service li{
+    margin-bottom:18px;
+    color:#d7d7d7;
+    font-size:18px;
+}
+
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+.gallery img{
+    width:100%;
+    height:420px;
+
+    object-fit:cover;
+
+    border-radius:28px;
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
+    transition: transform 0.4s ease;
+}
+
+.gallery img{
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.25);
+}
+
+
+/* CONTACT */
+
+.contact-box{
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:80px;
+
+    border-radius:40px;
+
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:50px;
+}
+
+.contact-item small{
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:12px;
+}
+
+.contact-item h4{
+    margin-top:18px;
+
+    font-size:24px;
+
+    font-weight:500;
+
+    line-height:1.8;
+
+    color:#e2e2e2;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:45px;
+
+    border-top:1px solid rgba(255,255,255,0.06);
+
+    color:#868686;
+
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+    nav{
+        gap:22px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero-logo{
+        flex-direction:column;
+    }
+
+    .hero-logo-text{
+        text-align:center;
+    }
+
+    .hero-logo-text h1{
+        font-size:52px;
+    }
+
+    .hero-logo img{
+        width:120px;
+        height:120px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .section-head h2{
+        font-size:48px;
+    }
+
+}
+
+
+/* HEADER LOGO */
+
+.header-logo{
+
+    position:fixed;
+    left:7%;
+    top:28px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    opacity:0;
+    transform:translateY(-10px);
+
+    transition:opacity 0.3s ease;
+
+    z-index:2000;
+
+}
+
+.header-logo img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.header-logo span{
+    font-size:14px;
+    letter-spacing:2px;
+    color:var(--gold);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<a href="#top" class="header-logo" id="headerLogo" style="text-decoration: none;">
+    <img src="logo.png" alt="Logo">
+    <span>Hoferica Company</span>
+</a>
+
+
+<nav>
+<a href="#top" class="home-link">
+    <span class="home-icon">⌂</span>
+    <span class="home-text">DOMOV</span>
+</a>
+<a href="#onas">O nás</a>
+<a href="#sluzby">Služby</a>
+<a href="#galeria">Galéria</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-logo" id="heroLogo">
+
+<img src="logo.png" alt="HOFERICA COMPANY Logo">
+
+<div class="hero-logo-text">
+
+<h1>Hoferica Company</h1>
+
+<p class="hero-subtitle">
+Elektroinštalácie
+</p>
+
+</div>
+
+</div>
+
+<p>
+
+
+
+</p>
+
+<a href="#kontakt" class="hero-btn">
+Kontaktujte nás
+</a>
+
+</div>
+
+</section>
+
+<!-- O NAS -->
+
+<section id="onas">
+
+<div class="section-head">
+
+<small>HOFERICA COMPANY</small>
+
+<h2>
+O nás
+</h2>
+
+</div>
+
+<div class="about">
+
+<p>
+
+Sme spoľahlivá elektroinštalačná firma so zameraním na kvalitné, bezpečné a moderné elektroinštalácie pre rodinné domy, byty a firemné objekty. Našim cieľom je poskytovať profesionálne služby, ktoré spájajú odborné skúsenosti, precízne spracovanie a individuálny prístup ku každému zákazníkovi.
+Realizujeme kompletné elektroinštalačné práce od návrhu až po finálnu montáž a revíziu. Zabezpečujeme nové elektroinštalácie, rekonštrukcie starých rozvodov, montáž osvetlenia, rozvádzačov aj servisné práce. Pri každom projekte dbáme na dodržiavanie platných noriem, bezpečnosť a vysokú kvalitu použitých materiálov.
+Vďaka dlhoročným skúsenostiam a technickému know-how dokážeme navrhnúť efektívne riešenia presne podľa potrieb klienta. Pracujeme spoľahlivo, načas a s dôrazom na detail, pretože spokojnosť zákazníka je pre nás prioritou.
+Či už potrebujete elektroinštaláciu pre rodinný dom, byt, kanceláriu alebo priemyselný objekt, sme pripravení priniesť profesionálne riešenie, na ktoré sa môžete spoľahnúť.
+
+
+</p>
+
+</div>
+
+</section>
+
+<!-- SLUZBY -->
+
+<section id="sluzby">
+
+<div class="section-head">
+<small>Hoferica company</small>
+<h2>Naše služby</h2>
+<p>Ponúkame komplexné elektroinštalačné služby pre rodinné domy, byty a firemné objekty. Každý projekt realizujeme s dôrazom na bezpečnosť, kvalitu a spoľahlivosť.
+</p>
+</div>
+
+<div class="services">
+
+<!-- 1 -->
+<div class="service">
+<div class="service-icon">⚡</div>
+<h3>Elektroinštalácie</h3>
+<p>Realizujeme kompletné elektroinštalácie v novostavbách aj pri rekonštrukciách. Zabezpečujeme rozvody elektriny, zásuvkové a svetelné okruhy, montáž vypínačov, zásuviek a elektro rozvádzačov.
+</p>
+</div>
+
+<!-- 2 -->
+<div class="service">
+<div class="service-icon">🔧</div>
+<h3>Rekonštrukcie</h3>
+<p>Modernizujeme staré a nevyhovujúce elektrické rozvody podľa aktuálnych bezpečnostných noriem. Pomáhame zvýšiť bezpečnosť aj energetickú efektivitu objektu.
+</p>
+</div>
+
+<!-- 3 -->
+<div class="service">
+<div class="service-icon">💡</div>
+<h3>Osvetlenie</h3>
+<p>Zabezpečujeme montáž interiérového aj exteriérového osvetlenia vrátane LED riešení, inteligentného ovládania a dekoratívneho osvetlenia.
+</p>
+</div>
+
+<!-- 4 -->
+<div class="service">
+<div class="service-icon">⚡🛡️</div>
+<h3>Bleskozvody</h3>
+<p>Realizujeme montáž bleskozvodov a systémov ochrany pred prepätím pre rodinné domy, byty a firemné objekty . Dbáme na správne uzemnenie, bezpečnosť objektu a ochranu elektroinštalácie pred poškodením. </p>
+</div>
+
+</div>
+
+</section>
+<!-- GALLERY -->
+
+<section id="galeria">
+
+<div class="section-head">
+
+<small>hoferica cacompany</small>
+
+<h2>
+Galéria 
+</h2>
+
+</div>
+
+<div class="gallery">
+
+<img src="elektroinstalaciadom1.webp" alt="">
+<img src="elektroinstalaciadom2.webp" alt="">
+<img src="bleskozvod.jpg" alt="">
+<img src="bleskozvodindustrie.jpg" alt="">
+<img src="svetla1.jpeg" alt="">
+<img src="svetla2.jpeg" alt="">
+<img src="industrie1.jpeg" alt="">
+<img src="kabelaz.jpeg" alt="">
+<img src="rohrenbau.jpeg" alt="">
+<img src="svetla5.jpeg" alt="">
+<img src="zapajanie.jpeg" alt="">
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="kontakt">
+
+<div class="section-head">
+
+<small>Kontakt</small>
+
+<h2>
+Spojte sa s nami
+</h2>
+
+</div>
+
+<div class="contact-box">
+
+<div class="contact-grid">
+
+<div class="contact-item">
+
+<small>Telefón</small>
+
+<h4>
++421 902 658 020
+</h4>
+
+</div>
+
+<div class="contact-item">
+
+<small>Email</small>
+
+<h4>
+hofericacompany@gmail.com
+</h4>
+
+</div>
+
+<div class="contact-item">
+
+<small>Adresa</small>
+
+<h4>
+Černyševského 1287/10 <br>
+851 01 Bratislava - mestská časť Petržalka
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 HOFERICA COMPANY — Všetky práva vyhradené.
+
+<!-- TLAČIDLO SPÄŤ HORE -->
+<a href="#" class="scroll-to-top" id="scrollToTopBtn">
+    <img src="logo.png" alt="Späť hore">
+</a>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    const headerLogo = document.querySelector(".header-logo");
+
+    window.addEventListener("scroll", function() {
+        // Kontrola pre plynulé spustenie (akonáhle prejdeme 80px zvrchu stránky)
+        if (window.scrollY > 80) {
+            scrollToTopBtn.classList.add("show");
+            headerLogo.classList.add("show-logo");
+        } else {
+            // Súčasné a koordinované spustenie prechodu pre obidva prvky smerom nadol
+            scrollToTopBtn.classList.remove("show");
+            headerLogo.classList.remove("show-logo");
+        }
+    });
+
+    // Akcia pre plynulý posun stránky na úplný vrch po kliknutí
+    scrollToTopBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+
+</body>
+</html>
