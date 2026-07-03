@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo1.png">
+<link rel="apple-touch-icon" href="logo1.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dotazník pre elektrikárov — HOFERICA COMPANY</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* TLAČIDLO V PRAVOM ROHU - POČIATOČNÝ STAV (SKRYTÉ) */
+.scroll-to-top {
+ position: fixed;
+ bottom: 30px;
+ right: 30px;
+ width: 60px;
+ height: 60px;
+ background-color: #050505;
+ border: 1px solid rgba(200, 169, 107, 0.4);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ z-index: 9999;
+ opacity: 0;
+ visibility: hidden;
+ transition: all 0.4s ease;
+ box-shadow: 0 0 20px rgba(200, 169, 107, 0.3);
+ text-decoration: none;
+}
+.scroll-to-top img {
+ width: 35px;
+ height: 35px;
+ object-fit: contain;
+}
+/* TRIEDA, KTORÚ JS PRIDÁ PRI SCROLLI (ZOBRAZENÉ) */
+.scroll-to-top.show {
+ opacity: 1 !important;
+ visibility: visible !important;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+:root{ --gold:#c8a96b; --black:#050505; }
+body{ background:var(--black); color:white; font-family:'Manrope', sans-serif; overflow-x:hidden; }
+body::before{ content:''; position:fixed; inset:0; background: radial-gradient(circle at top left, rgba(200,169,107,0.08), transparent 25%), radial-gradient(circle at bottom right, rgba(200,169,107,0.06), transparent 30%); pointer-events:none; z-index:-2; }
+header{ position:fixed; top:0; left:0; width:100%; padding:30px 7%; display:flex; justify-content:center; align-items:center; background:rgba(5,5,5,0.82); backdrop-filter:blur(18px); border-bottom:1px solid rgba(255,255,255,0.06); z-index:1000; }
+nav{ display:flex; gap:45px; align-items: center; }
+nav a{ color:white; text-decoration:none; text-transform:uppercase; letter-spacing:2px; font-size:13px; font-weight:600; position:relative; transition:0.4s; display: inline-flex !important; align-items: center !important; gap: 6px !important; }
+nav a:hover{ color:var(--gold); }
+section{ padding:160px 8% 60px; max-width:760px; margin: 0 auto; }
+footer{ text-align:center; padding:45px; border-top:1px solid rgba(255,255,255,0.06); color:#868686; font-size:14px; }
+.header-logo{ position:fixed; left:7%; top:28px; display:flex; align-items:center; gap:10px; opacity:0; transform:translateY(-10px); transition:opacity 0.3s ease; z-index:2000; }
+.header-logo img{ width:42px; height:42px; object-fit:contain; }
+.header-logo span{ font-size:14px; letter-spacing:2px; color:var(--gold); }
+.header-logo.show-logo { opacity: 1 !important; transform: translateY(0) !important; }
+@media(max-width:980px){
+ header { position: fixed !important; padding: 15px 5% !important; flex-direction: column !important; gap: 15px !important; width: 100% !important; justify-content: center !important; }
+ .header-logo { position: relative !important; left: auto !important; top: auto !important; transform: none !important; display: flex !important; justify-content: center !important; width: 100% !important; }
+ nav { gap: 12px 18px !important; flex-wrap: wrap !important; justify-content: center !important; }
+ section { padding: 140px 4% 40px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- KÓD PRE NAVIGAČNÝ PANEL (Vymeňte od <header> po </header>) -->
+<header style="position: fixed; top: 0; left: 0; width: 100%; padding: 30px 7%; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 1000;">
+  
+  <!-- HLAVNÉ LOGO (Zostáva fixne vľavo, izolované od menu a využíva triedu pre skrytie/zobrazenie z vášho JS) -->
+  <a href="index.html#top" class="header-logo" id="headerLogo" style="display: flex; align-items: center; gap: 10px; text-decoration: none; position: relative; left: auto; top: auto; transform: none; opacity: 0; transition: opacity 0.4s ease, visibility 0.4s ease; z-index: 2000;">
+    <img src="logo.png" alt="Logo" style="width: 42px; height: 42px; object-fit: contain;">
+    <span style="font-size: 14px; letter-spacing: 2px; color: #c8a96b; font-family: 'Manrope', sans-serif; font-weight: 700; text-transform: uppercase;">Hoferica Company</span>
+  </a>
+
+  <!-- NAVIGAČNÉ MENU (Zarovnané doprava, s upravenými farbami podľa dokumentu) -->
+  <nav style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+    <a href="index.html#top" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">
+      <span style="color: #c8a96b; font-size: 16px; margin-bottom: 2px;">⌂</span> DOMOV
+    </a>
+    <a href="index.html#onas" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">O nás</a>
+    <a href="index.html#sluzby" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Služby</a>
+    
+    <!-- Trvalo zvýraznené položky s farbami podľa špecifikácie z dokumentu -->
+    <a href="inteligentna_domacnost.html" class="nav-smart" style="color: #2ecc71 !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 700;">Inteligentná domácnosť</a>
+    <a href="spolupraca.html" style="color: #c8a96b !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 700;">Spolupráca</a>
+    
+    <a href="index.html#galeria" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Galéria</a>
+    <a href="index.html#kontakt" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Kontakt</a>
+  </nav>
+
+</header>
+
+
+
+<!-- FINÁLNY KÓD PRE DOTAZNIK.HTML S ODKAZOM, VÝŠKOU 3883 PX A OŠETRENÍM VYMAZANIA -->
+<section style="padding: 160px 5% 60px; max-width: 760px; margin: 0 auto; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+  
+  <!-- Fixne nastavený váš presný zdrojový odkaz -->
+  <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSeqnxXOH5RIfGAxaTDIosXXymv-xqKrxiB9Yh8Wzy_l7hDSAg/viewform?embedded=true" width="640" height="3883" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border: none; background: rgba(255,255,255,0.02); border-radius: 30px; box-shadow: 0 0 35px rgba(200, 169, 107, 0.15); max-width: 100%; overflow: hidden; transition: height 0.4s ease;">Načítava sa…</iframe>
+
+  <!-- INTELIGENTNÝ AUTOMATICKÝ SKRIPT PRE VŠETKY KROKY -->
+  <script>
+    let formElement = document.getElementById('google-form');
+    let isInitiallyLoaded = false;
+
+    formElement.addEventListener('load', function() {
+      // 1. KROK: Prvé načítanie pri otvorení stránky ignorujeme, nechá sa plná výška
+      if (!isInitiallyLoaded) {
+        isInitiallyLoaded = true;
+        return;
+      }
+
+      // Prečítame aktuálnu výšku viditeľného okna prehliadača
+      let windowHeight = window.innerHeight;
+
+      // Malé oneskorenie, aby Google stihol spracovať zmenu obsahu na pozadí
+      setTimeout(function() {
+        
+        // 3. a 4. KROK: POUŽÍVATEĽ VYMAZAL FORMULÁR ALEBO KLIKOL NA "ODOSLAŤ INÚ ODPOVEĎ"
+        // Stránka zostala vnútri dlhá, preto rámček vrátime na 3883px a vyrolujeme na začiatok otázok
+        if (document.documentElement.scrollHeight > windowHeight + 500) {
+          formElement.style.height = "3883px";
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } 
+        
+        // 2. KROK: POUŽÍVATEĽ ODOSLAL FORMULÁR
+        // Obsah sa prudko zmenšil len na úspešnú správu, preto okno stiahneme na 350px a vycentrujeme pohľad
+        else {
+          formElement.style.height = "350px";
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+      }, 150); // Bezpečné oneskorenie 150 milisekúnd
+    });
+  </script>
+
+</section>
+
+
+
+
+<footer>
+
+© 2026 HOFERICA COMPANY — Všetky práva vyhradené.
+
+<!-- TLAČIDLO SPÄŤ HORE -->
+<a href="#" class="scroll-to-top" id="scrollToTopBtn">
+    <img src="logo.png" alt="Späť hore">
+</a>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    const headerLogo = document.querySelector(".header-logo");
+
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 80) {
+            scrollToTopBtn.classList.add("show");
+            headerLogo.classList.add("show-logo");
+        } else {
+            scrollToTopBtn.classList.remove("show");
+            headerLogo.classList.remove("show-logo");
+        }
+    });
+
+    scrollToTopBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
