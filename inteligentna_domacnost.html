@@ -3,18 +3,6 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18233065510">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18233065510');
-</script>
- 
 <link rel="icon" type="image/png" sizes="32x32" href="logointeligent.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logointeligent.png">
 <link rel="apple-touch-icon" href="logointeligent.png">
@@ -203,7 +191,7 @@ nav a:hover::after{
 }
 .hero-logo-text h1{
  font-family:'Cormorant Garamond', serif;
- font-size:90px;
+ font-size:52px;
  line-height:1;
  margin:0;
  color:white;
@@ -510,23 +498,36 @@ footer{
 
 
 <body>
-<!-- HEADER -->
-<header>
-<a href="index.html" class="header-logo" id="headerLogo">
- <img src="logointeligent.png" alt="Logo Inteligent">
- <span>Hoferica Company</span>
-</a>
-<nav>
-<a href="index.html" class="home-link">
- <span class="home-icon" style="color:var(--green);">⌂</span>
- <span class="home-text">DOMOV</span>
-</a>
-<a href="index.html#onas">O nás</a>
-<a href="index.html#sluzby">Služby</a>
-<a href="#top" style="color:var(--green);">Inteligentná domácnosť</a>
-<a href="#galeria-smart">Galéria</a>
-<a href="#kontakt-smart">Kontakt</a>
-</nav>
+<!-- KÓD PRE NAVIGAČNÝ PANEL (Vymeňte od <header> po </header>) -->
+<header style="position: fixed; top: 0; left: 0; width: 100%; padding: 30px 7%; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 1000;">
+  
+  <!-- HLAVNÉ LOGO (Zostáva fixne vľavo, izolované od menu a využíva triedu pre skrytie/zobrazenie z vášho JS) -->
+  <a href="index.html#top" class="header-logo" id="headerLogo" style="display: flex; align-items: center; gap: 10px; text-decoration: none; position: relative; left: auto; top: auto; transform: none; opacity: 0; transition: opacity 0.4s ease, visibility 0.4s ease; z-index: 2000;">
+    <img src="logo.png" alt="Logo" style="width: 42px; height: 42px; object-fit: contain;">
+    <span style="font-size: 14px; letter-spacing: 2px; color: #c8a96b; font-family: 'Manrope', sans-serif; font-weight: 700; text-transform: uppercase;">Hoferica Company</span>
+  </a>
+
+  <!-- NAVIGAČNÉ MENU (Zarovnané doprava, s upravenými farbami podľa dokumentu) -->
+  <nav style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+    <a href="index.html#top" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">
+
+      <span style="color: #c8a96b; font-size: 16px; margin-bottom: 2px;">⌂</span> DOMOV
+    </a>
+
+    <a href="index.html#onas" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">O nás</a>
+
+    <a href="index.html#sluzby" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Služby</a>
+    
+    <!-- Trvalo zvýraznené položky s farbami podľa špecifikácie z dokumentu -->
+    <a href="inteligentna_domacnost.html" class="nav-smart" style="color: #2ecc71 !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Inteligentná domácnosť</a>
+
+    <a href="spolupraca.html" style="color: #c8a96b !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Spolupráca</a>
+    
+    <a href="index.html#galeria" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Galéria</a>
+    <a href="index.html#kontakt" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Kontakt</a>
+  </nav>
+
+
 </header>
 
 <!-- HERO — S POZADÍM HEROLOXONE.JPEG A LOGOM LOGINTELIGENT.PNG -->
