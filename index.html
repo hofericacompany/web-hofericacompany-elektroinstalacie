@@ -1,19 +1,8 @@
-<!--pôvodný pre ai-->
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18233065510">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18233065510');
-</script>
-    
 <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logo1.png">
 <link rel="apple-touch-icon" href="logo1.png">
@@ -913,27 +902,30 @@ nav a.nav-smart::after {
 
 <body>
 
-<!-- HEADER -->
+<!-- KÓD PRE NAVIGAČNÝ PANEL (Vymeňte od <header> po </header>) -->
+<header style="position: fixed; top: 0; left: 0; width: 100%; padding: 30px 7%; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 1000;">
+  
+  <!-- HLAVNÉ LOGO (Zostáva fixne vľavo, izolované od menu a využíva triedu pre skrytie/zobrazenie z vášho JS) -->
+  <a href="index.html#top" class="header-logo" id="headerLogo" style="display: flex; align-items: center; gap: 10px; text-decoration: none; position: relative; left: auto; top: auto; transform: none; opacity: 0; transition: opacity 0.4s ease, visibility 0.4s ease; z-index: 2000;">
+    <img src="logo.png" alt="Logo" style="width: 42px; height: 42px; object-fit: contain;">
+    <span style="font-size: 14px; letter-spacing: 2px; color: #c8a96b; font-family: 'Manrope', sans-serif; font-weight: 700; text-transform: uppercase;">Hoferica Company</span>
+  </a>
 
-<header>
-
-<a href="#top" class="header-logo" id="headerLogo" style="text-decoration: none;">
-    <img src="logo.png" alt="Logo">
-    <span>Hoferica Company</span>
-</a>
-
-
-<nav>
-<a href="#top" class="home-link">
-    <span class="home-icon">⌂</span>
-    <span class="home-text">DOMOV</span>
-</a>
-<a href="#onas">O nás</a>
-<a href="#sluzby">Služby</a>
-<a href="inteligentna_domacnost.html" class="nav-smart">Inteligentná domácnosť</a>
-<a href="#galeria">Galéria</a>
-<a href="#kontakt">Kontakt</a>
-</nav>
+  <!-- NAVIGAČNÉ MENU (Zarovnané doprava, s upravenými farbami podľa dokumentu) -->
+  <nav style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+    <a href="index.html#top" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">
+      <span style="color: #c8a96b; font-size: 16px; margin-bottom: 2px;">⌂</span> DOMOV
+    </a>
+    <a href="index.html#onas" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">O nás</a>
+    <a href="index.html#sluzby" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Služby</a>
+    
+    <!-- Trvalo zvýraznené položky s farbami podľa špecifikácie z dokumentu -->
+    <a href="inteligentna_domacnost.html" class="nav-smart" style="color: #2ecc71 !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 700;">Inteligentná domácnosť</a>
+    <a href="spolupraca.html" style="color: #c8a96b !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 700;">Spolupráca</a>
+    
+    <a href="index.html#galeria" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Galéria</a>
+    <a href="index.html#kontakt" style="color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600;">Kontakt</a>
+  </nav>
 
 </header>
 
@@ -1009,7 +1001,6 @@ Spájame dlhoročné skúsenosti s najnovšími technológiami. Používame výh
     Dôverujte remeslu, ktoré má pevné základy.
 
 </p>
-
 </div>
 
 </section>
@@ -1081,7 +1072,7 @@ Realizujeme montáž bleskozvodov a systémov ochrany pred prepätím pre rodinn
 
 <br><br>
 
-Zabezpečujeme kompletnú realizáciu inteligentných elektroinštalácií od úvodného projektu, vrátane kompletnej kabeláže a odbornej montáže rozvádzačov až po finálne oživenie a naprogramovanie celého systému.  </p>
+Zabezpečujeme kompletnú realizáciu inteligentných elektroinštalácií od úvodného projektu, vrátane kompletnej kabeláže a precízneho skladania rozvádzačov až po finálne oživenie a naprogramovanie celého systému.  </p>
 </div>
 
 </div>
@@ -1121,6 +1112,367 @@ Zabezpečujeme kompletnú realizáciu inteligentných elektroinštalácií od ú
 
 
 </section>
+
+
+<!-- KÓD PRE NOVÝ KONTAKTNÝ FORMULÁR (1. ČASŤ: HTML ŠTRUKTÚRA) -->
+<section id="dopyt-formular" style="padding-bottom: 0;">
+    <div class="custom-contact-container">
+        <h2 class="form-title">Nezáväzný dopyt</h2>
+        <p class="form-subtitle">Vyplňte formulár a my sa vám ozveme s riešením na mieru.</p>
+        
+        <form id="cc-main-form" action="odoslat-formular.php" method="POST" enctype="multipart/form-data">
+            
+            <div class="cc-form-group">
+                <label for="cc-name">Meno a priezvisko</label>
+                <input type="text" id="cc-name" name="Meno" placeholder="Ján Novák" required>
+            </div>
+
+            <div class="cc-form-row">
+                <div class="cc-form-group">
+                    <label for="cc-email">E-mailová adresa</label>
+                    <input type="email" id="cc-email" name="Email" placeholder="jan.novak@example.com" required>
+                </div>
+                <div class="cc-form-group">
+                    <label for="cc-phone">Telefónny kontakt</label>
+                    <input type="tel" id="cc-phone" name="Telefon" placeholder="+421 900 123 456" required>
+                </div>
+            </div>
+
+            <div class="cc-form-group">
+                <label for="cc-source">Odkiaľ ste sa o nás dopočuli?</label>
+                <select id="cc-source" name="Odkial_sa_dozvedel" onchange="toggleOtherInput()" required>
+                    <option value="" disabled selected>Vyberte možnosť...</option>
+                    <option value="Internet">Internet</option>
+                    <option value="Známi">Známi</option>
+                    <option value="Reklama">Reklama</option>
+                    <option value="Iné">Iné (uveďte nižšie)</option>
+                </select>
+            </div>
+
+            <div class="cc-form-group" id="cc-other-source-wrap" style="display: none;">
+                <label for="cc-source-other">Špecifikujte odkiaľ:</label>
+                <input type="text" id="cc-source-other" name="Ine_specifikacia" placeholder="Napr. sociálne siete, leták...">
+            </div>
+
+            <div class="cc-form-group">
+                <label for="cc-service">Mám záujem o službu:</label>
+                <select id="cc-service" name="Sluzba" required>
+                    <option value="" disabled selected>Vyberte službu...</option>
+                    <option value="Elektroinštalácia">Elektroinštalácia</option>
+                    <option value="Rekonštrukcia">Rekonštrukcia</option>
+                    <option value="Inteligentná domácnosť / Smart Home">Inteligentná domácnosť / Smart Home</option>
+                    <option value="Prípojka">Prípojka</option>
+                    <option value="Bleskozvod">Bleskozvod</option>
+                    <option value="Cenová ponuka">Cenová ponuka</option>
+                </select>
+            </div>
+
+            <!-- Sekcia pre nahrávanie súborov po jednom -->
+            <div class="cc-form-group">
+                <label>Pridať dokumenty (môžete pridávať postupne za sebou)</label>
+                <div class="cc-file-input-wrapper">
+                    <input type="file" id="cc-file-selector" multiple style="display: none;">
+                    <button type="button" class="cc-file-trigger" onclick="document.getElementById('cc-file-selector').click()">Vybrať súbor</button>
+                </div>
+                <small class="cc-help-text">Napr.: projektová dokumentácia, technická správa, výkaz výmer, atď.</small>
+                
+                <!-- Miesto na zobrazenie súborov vedľa seba -->
+                <div id="cc-file-list" class="cc-file-list"></div>
+            </div>
+
+            <div class="cc-form-group">
+                <label for="cc-message">Vaša správa / Detaily dopytu</label>
+                <textarea id="cc-message" name="Sprava" placeholder="Tu napíšte podrobnosti o vašom projekte..." required></textarea>
+            </div>
+
+            <div class="cc-form-group cc-gdpr-group">
+                <input type="checkbox" id="cc-gdpr" name="GDPR_Suhlas" required>
+                <label for="cc-gdpr">Súhlasím so spracovaním osobných údajov aby ste ma mohli kontaktovať k ponuke.</label>
+            </div>
+
+            <button type="submit" class="cc-submit-btn">Odoslať dopyt</button>
+            
+        </form>
+    </div>
+</section>
+
+<!-- JAVASCRIPT PRE SKRYTÉ POLIA A UKLADANIE SÚBOROV ZA SEBOU -->
+<script>
+function toggleOtherInput() {
+    var select = document.getElementById("cc-source");
+    var otherInputWrap = document.getElementById("cc-other-source-wrap");
+    var otherInput = document.getElementById("cc-source-other");
+    
+    if (select.value === "Iné") {
+        otherInputWrap.style.display = "block";
+        otherInput.required = true;
+    } else {
+        otherInputWrap.style.display = "none";
+        otherInput.required = false;
+        otherInput.value = "";
+    }
+}
+
+let selectedFiles = [];
+const fileSelector = document.getElementById('cc-file-selector');
+const fileListContainer = document.getElementById('cc-file-list');
+const mainForm = document.getElementById('cc-main-form');
+
+fileSelector.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
+        if (!selectedFiles.some(f => f.name === file.name && f.size === file.size)) {
+            selectedFiles.push(file);
+        }
+    });
+    
+    updateFileList();
+    fileSelector.value = '';
+});
+
+function updateFileList() {
+    fileListContainer.innerHTML = '';
+    
+    selectedFiles.forEach((file, index) => {
+        const fileBadge = document.createElement('div');
+        fileBadge.className = 'cc-file-badge';
+        
+        fileBadge.innerHTML = `
+            <span class="cc-file-name">${file.name}</span>
+            <span class="cc-file-remove" onclick="removeFile(${index})">&times;</span>
+        `;
+        
+        fileListContainer.appendChild(fileBadge);
+    });
+}
+
+function removeFile(index) {
+    selectedFiles.splice(index, 1);
+    updateFileList();
+}
+
+mainForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!mainForm.checkValidity()) {
+        mainForm.reportValidity();
+        return;
+    }
+
+    const formData = new FormData(mainForm);
+    formData.delete('Prilohy[]');
+    selectedFiles.forEach(file => {
+        formData.append('Prilohy[]', file);
+    });
+
+    const submitBtn = mainForm.querySelector('.cc-submit-btn');
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = "ODOSIELAM...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch(mainForm.action, {
+            method: 'POST',
+            body: formData
+        });
+        
+        alert('Ďakujeme. Váš dopyt bol úspešne odoslaný.');
+        mainForm.reset();
+        selectedFiles = [];
+        updateFileList();
+        toggleOtherInput();
+    } catch (error) {
+        alert('Chyba pri odosielaní formulára. Skontrolujte nastavenie servera.');
+    } finally {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+    }
+});
+</script>
+
+<!-- CSS ŠTÝLY PRE LUXUSNÝ DIZAJN (ČIERNA/ZLATÁ) -->
+<style>
+.custom-contact-container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 80px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    box-shadow: 0 0 25px rgba(200, 169, 107, 0.15);
+}
+.custom-contact-container .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.custom-contact-container .form-subtitle {
+    color: #cfcfcf;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+.cc-form-group {
+    margin-bottom: 25px;
+}
+.cc-form-row {
+    display: flex;
+    gap: 30px;
+}
+.cc-form-row .cc-form-group {
+    flex: 1;
+}
+.cc-form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.cc-form-group input[type="text"],
+.cc-form-group input[type="email"],
+.cc-form-group input[type="tel"],
+.cc-form-group select,
+.cc-form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(5,5,5,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+    transition: 0.3s ease;
+}
+.cc-form-group input:focus,
+.cc-form-group select:focus,
+.cc-form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(200, 169, 107, 0.2);
+    outline: none;
+}
+.cc-form-group select option {
+    background: #111;
+    color: white;
+}
+.cc-form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+.cc-file-trigger {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px dashed var(--gold);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.cc-file-trigger:hover {
+    background: rgba(200, 169, 107, 0.1);
+}
+.cc-file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+.cc-file-badge {
+    background: rgba(200, 169, 107, 0.15);
+    border: 1px solid var(--gold);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+.cc-file-remove {
+    color: #ff4d4d;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1;
+}
+.cc-file-remove:hover {
+    color: #ff1a1a;
+}
+.cc-help-text {
+    display: block;
+    margin-top: 8px;
+    color: #868686;
+    font-size: 13px;
+    font-style: italic;
+}
+.cc-gdpr-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.cc-gdpr-group input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+.cc-gdpr-group label {
+    display: inline;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 15px;
+    color: #e2e2e2;
+    cursor: pointer;
+    font-weight: normal;
+}
+.cc-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border: 1px solid rgba(200,169,107,0.45);
+    background: transparent;
+    color: white;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.45s;
+    border-radius: 4px;
+}
+.cc-submit-btn:hover {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 0 40px rgba(200, 169, 107, 0.25);
+}
+@media (max-width: 980px) {
+    .custom-contact-container {
+        padding: 35px 20px !important;
+    }
+    .custom-contact-container .form-title {
+        font-size: 36px !important;
+    }
+    .cc-form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+</style>
+
 
 <!-- CONTACT -->
 
