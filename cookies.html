@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo1.png">
+<link rel="apple-touch-icon" href="logo1.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zásady používania cookies - Hoferica Company s.r.o.</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ scroll-behavior:smooth;
+}
+:root{
+ --gold:#c8a96b;
+ --gold-light:#f0d8a2;
+ --black:#050505;
+}
+body{
+ background:var(--black);
+ color:white;
+ font-family:'Manrope', sans-serif;
+ overflow-x:hidden;
+ padding-top: 130px;
+}
+body::before{
+ content:'';
+ position:fixed;
+ inset:0;
+ background: radial-gradient(circle at top left, rgba(200,169,107,0.08), transparent 25%),
+ radial-gradient(circle at bottom right, rgba(200,169,107,0.06), transparent 30%);
+ pointer-events:none;
+ z-index:-2;
+}
+body::after{
+ content:'';
+ position:fixed;
+ inset:0;
+ background-image:
+ linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+ background-size:4px 4px;
+ opacity:0.15;
+ z-index:-1;
+ pointer-events:none;
+}
+::-webkit-scrollbar{
+ width:10px;
+}
+::-webkit-scrollbar-track{
+ background:#111;
+}
+::-webkit-scrollbar-thumb{
+ background:linear-gradient(var(--gold), #866633);
+ border-radius:30px;
+}
+
+/* HEADER */
+header{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ padding:30px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:rgba(5,5,5,0.82);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(255,255,255,0.06);
+ z-index:1000;
+}
+
+/* HLAVNÉ LOGO V LIŠTE */
+.header-logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ text-decoration: none;
+ transition: opacity 0.4s ease, visibility 0.4s ease !important;
+ z-index: 2000;
+}
+.header-logo img{
+ width:42px;
+ height:42px;
+ object-fit:contain;
+}
+.header-logo span{
+ font-size:14px;
+ letter-spacing:2px;
+ color:var(--gold);
+ font-family: 'Manrope', sans-serif;
+ font-weight: 700;
+ text-transform: uppercase;
+}
+
+/* NAVIGATION */
+nav{
+ display:flex;
+ gap:28px;
+ align-items: center;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+}
+nav a{
+ color:white;
+ text-decoration:none;
+ text-transform:uppercase;
+ letter-spacing:1.5px;
+ font-size:12px;
+ font-weight:600;
+ position:relative;
+ transition:0.4s;
+ display: inline-flex !important;
+ align-items: center !important;
+ gap: 5px !important;
+}
+nav a:hover{
+ color:var(--gold);
+}
+nav a::after{
+ content:'';
+ position:absolute;
+ left:0;
+ bottom:-8px;
+ width:0%;
+ height:1px;
+ background:var(--gold);
+ transition:0.4s;
+}
+nav a:hover::after{
+ width:100%;
+}
+nav a.nav-smart {
+ color: #2ecc71 !important;
+ font-weight: 700;
+}
+nav a.nav-smart::after {
+ background: #2ecc71 !important;
+}
+nav a.nav-gold {
+ color: var(--gold) !important;
+ font-weight: 700;
+}
+
+/* SCROLL TO TOP BUTTON */
+.scroll-to-top {
+ position: fixed;
+ bottom: 30px;
+ right: 30px;
+ width: 60px;
+ height: 60px;
+ background-color: #050505;
+ border: 1px solid rgba(200, 169, 107, 0.4);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ z-index: 9999;
+ opacity: 0;
+ visibility: hidden;
+ transition: all 0.4s ease;
+ box-shadow: 0 0 20px rgba(200, 169, 107, 0.3);
+ text-decoration: none;
+}
+.scroll-to-top img {
+ width: 35px;
+ height: 35px;
+ object-fit: contain;
+}
+.scroll-to-top.show {
+ opacity: 1 !important;
+ visibility: visible !important;
+}
+
+/* GDPR CONTENT LAYOUT */
+section{
+ padding:80px 8% 120px;
+}
+.section-head{
+ text-align:center;
+ margin-bottom:60px;
+}
+.section-head small{
+ color:var(--gold);
+ text-transform:uppercase;
+ letter-spacing:5px;
+ font-size:12px;
+}
+.section-head h1{
+ font-family:'Cormorant Garamond', serif;
+ font-size:64px;
+ margin-top:18px;
+ font-weight:700;
+ color: white;
+}
+.gdpr-container {
+ max-width: 1000px;
+ margin: 0 auto;
+ background: rgba(255,255,255,0.02);
+ border: 1px solid rgba(255,255,255,0.06);
+ padding: 60px;
+ border-radius: 30px;
+ backdrop-filter: blur(10px);
+}
+.gdpr-block {
+ margin-bottom: 40px;
+}
+.gdpr-block:last-child {
+ margin-bottom: 0;
+}
+.gdpr-block h2 {
+ font-family:'Cormorant Garamond', serif;
+ font-size: 32px;
+ color: var(--gold);
+ margin-bottom: 20px;
+ border-bottom: 1px solid rgba(200, 169, 107, 0.2);
+ padding-bottom: 10px;
+}
+.gdpr-block p {
+ font-size: 16px;
+ line-height: 1.8;
+ color: #cfcfcf;
+ font-weight: 300;
+ margin-bottom: 15px;
+}
+.gdpr-block ul {
+ list-style: none;
+ margin-left: 10px;
+ margin-bottom: 15px;
+}
+.gdpr-block li {
+ font-size: 16px;
+ line-height: 1.8;
+ color: #cfcfcf;
+ font-weight: 300;
+ margin-bottom: 10px;
+ position: relative;
+ padding-left: 20px;
+}
+.gdpr-block li::before {
+ content: "•";
+ color: var(--gold);
+ position: absolute;
+ left: 0;
+ font-size: 20px;
+ line-height: 1.6;
+}
+
+/* COOKIE TABLE */
+.cookie-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 20px 0;
+ font-size: 14px;
+}
+.cookie-table th, .cookie-table td {
+ border: 1px solid rgba(255, 255, 255, 0.08);
+ padding: 12px;
+ text-align: left;
+}
+.cookie-table th {
+ background: rgba(200, 169, 107, 0.1);
+ color: var(--gold);
+ font-weight: 600;
+}
+
+/* FOOTER */
+footer{
+ text-align:center;
+ padding:45px;
+ border-top:1px solid rgba(255,255,255,0.06);
+ color:#868686;
+ font-size:14px;
+}
+
+/* MODERNÁ MOBILNÁ RESPONSIVITA */
+@media(max-width:980px){
+ html, body {
+ width: 100% !important;
+ max-width: 100% !important;
+ overflow-x: hidden !important;
+ }
+ body {
+ padding-top: 160px;
+ }
+ section {
+ padding: 50px 5% !important;
+ width: 100% !important;
+ box-sizing: border-box !important;
+ }
+ header {
+ position: fixed !important;
+ padding: 15px 5% !important;
+ flex-direction: column !important;
+ gap: 15px !important;
+ width: 100% !important;
+ left: 0 !important;
+ top: 0 !important;
+ justify-content: center !important;
+ align-items: center !important;
+ gap: 10px !important;
+ width: 100% !important;
+ margin-bottom: 5px !important;
+ }
+ .header-logo {
+ position: relative !important;
+ left: auto !important;
+ top: auto !important;
+ transform: none !important;
+ display: flex !important;
+ justify-content: center !important;
+ align-items: center !important;
+ gap: 10px !important;
+ width: 100% !important;
+ margin-bottom: 5px !important;
+ }
+ .header-logo img {
+ width: 35px !important;
+ height: 35px !important;
+ }
+ .header-logo span {
+ font-size: 13px !important;
+ }
+ nav {
+ gap: 12px 18px !important;
+ flex-wrap: wrap !important;
+ justify-content: center !important;
+ width: 100% !important;
+ }
+ nav a {
+ font-size: 11px !important;
+ letter-spacing: 1px !important;
+ display: inline-flex !important;
+ align-items: center !important;
+ gap: 4px !important;
+ }
+ .section-head h1 {
+ font-size: 36px !important;
+ }
+ .gdpr-container {
+ padding: 30px 20px !important;
+ border-radius: 20px !important;
+ }
+ .gdpr-block h2 {
+ font-size: 26px !important;
+ }
+ .scroll-to-top {
+ bottom: 20px !important;
+ right: 20px !important;
+ width: 50px !important;
+ height: 50px !important;
+ }
+ .scroll-to-top img {
+ width: 26px !important;
+ height: 26px !important;
+ }
+ .cookie-table {
+ display: block;
+ overflow-x: auto;
+ }
+}
+
+@media(max-width:480px) {
+ .section-head h1 {
+ font-size: 28px !important;
+ }
+ nav {
+ gap: 10px 14px !important;
+ }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAVIGAČNÝ PANEL -->
+<header>
+ <a href="index.html#top" class="header-logo" id="headerLogo">
+ <img src="logo.png" alt="Logo">
+ <span>HT-EL Instal</span>
+ </a>
+ <nav>
+ <a href="index.html#top">
+ <span style="color: #c8a96b; font-size: 16px; margin-bottom: 2px;">⌂</span> DOMOV
+ </a>
+
+ <a href="index.html#onas">O nás</a>
+ <a href="index.html#sluzby">Služby</a>
+ <a href="inteligentna_domacnost.html" class="nav-smart">Inteligentná domácnosť</a>
+ <a href="spolupraca.html" class="nav-gold">Spolupráca</a>
+ <a href="index.html#galeria">Galéria</a>
+ <a href="index.html#kontakt">Kontakt</a>
+ </nav>
+</header>
+
+<!-- HLAVNÝ OBSAH - ZÁSADY POUŽÍVANIA SÚBOROV COOKIES -->
+<section>
+ <div class="section-head">
+ <small>SÚKROMIE A COOKIES</small>
+ <h1>Zásady používania súborov cookies</h1>
+ </div>
+
+ <div class="gdpr-container">
+ <div class="gdpr-block">
+ <h2>1. Čo sú súbory cookies?</h2>
+ <p>Súbory cookies sú malé textové súbory, ktoré sa ukladajú do vášho počítača, mobilu alebo iného zariadenia pri návšteve webovej stránky www.hofericacompany.sk. Pomáhajú webu správne fungovať a poskytujú nám anonymné štatistické informácie o jeho návštevnosti.</p>
+ </div>
+
+ <div class="gdpr-block">
+ <h2>2. Ako cookies používame?</h2>
+ <p>Na našom webe využívame dva základné typy súborov cookies:</p>
+ <ul>
+ <li><strong>Nevyhnutné cookies:</strong> Sú nevyhnutné pre základné technické fungovanie webu a bezpečnosť. Bez nich by stránka nemohla správne zobraziť obsah alebo odoslať formuláre. Na ich používanie sa nevyžaduje súhlas.</li>
+ <li><strong>Analytické cookies (Google Analytics):</strong> Pomáhajú nám pochopiť, ako návštevníci komunikujú s webom (ktoré podstránky navštevujú najčastejšie, koľko času na nich strávia). Tieto dáta zbierame anonymne a spracúvame ich len vtedy, ak nám udelíte súhlas prostredníctvom cookie lišty.</li>
+ </ul>
+ </div>
+
+ <div class="gdpr-block">
+ <h2>3. Prehľad používaných súborov cookies</h2>
+ <table class="cookie-table">
+ <thead>
+ <tr>
+ <th>Názov</th>
+ <th>Typ</th>
+ <th>Účel</th>
+ <th>Doba platnosti</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Necessary</strong></td>
+ <td>Nevyhnutné</td>
+ <td>Ukladanie technického stavu webu a zabezpečenie prenosu dát.</td>
+ <td>Počas relácie (session)</td>
+ </tr>
+ <tr>
+ <td><strong>_ga</strong></td>
+ <td>Analytické</td>
+ <td>Identifikácia unikátnych návštevníkov v Google Analytics.</td>
+ <td>2 roky (max 14 mesiacov na dáta)</td>
+ </tr>
+ <tr>
+ <td><strong>_ga_*</strong></td>
+ <td>Analytické</td>
+ <td>Uchovávanie stavu relácie používateľa v Google Analytics.</td>
+ <td>2 roky (max 14 mesiacov na dáta)</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+
+ <div class="gdpr-block">
+ <h2>4. Ako môžete spravovať a vymazať cookies?</h2>
+ <p>Väčšina internetových prehliadačov automaticky akceptuje cookies už v základnom nastavení. Nastavenie ukladania cookies však môžete kedykoľvek zmeniť alebo ich úplne zablokovať priamo vo vašom prehliadači.</p>
+ <p>Ak cookies zakážete, web bude naďalej funkčný, no nebudeme môcť merať anonymné štatistiky návštevnosti na zlepšovanie používateľského zážitku. Návody na správu cookies pre najpoužívanejšie prehliadače nájdete tu:</p>
+ <ul>
+ <li><a href="https://google.com" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">Google Chrome</a></li>
+ <li><a href="https://mozilla.org" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">Mozilla Firefox</a></li>
+ <li><a href="https://microsoft.com" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">Microsoft Edge</a></li>
+ <li><a href="https://apple.com" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">Apple Safari</a></li>
+ </ul>
+ </div>
+
+ <div class="gdpr-block">
+ <h2>5. Kontakt</h2>
+ <p>Ak máte akékoľvek otázky týkajúce sa používania cookies na našom webe, napíšte nám na:<br>
+ 📧 <a href="mailto:hofericacompany@gmail.com" style="color: var(--gold); text-decoration: none;">hofericacompany@gmail.com</a> </p>
+ </div>
+ </div>
+</section>
+
+<footer>
+ &copy; 2026 Hoferica Company s.r.o. Všetky práva vyhradené.
+</footer>
+
+<!-- TLAČIDLO HORE -->
+<a href="#top" class="scroll-to-top" id="scrollTopBtn">
+ <img src="logo1.png" alt="Hore">
+</a>
+
+<script>
+window.onscroll = function() { scrollFunction() };
+
+function scrollFunction() {
+ var scrollTopBtn = document.getElementById("scrollTopBtn");
+ 
+ if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+ scrollTopBtn.classList.add("show");
+ } else {
+ scrollTopBtn.classList.remove("show");
+ }
+}
+</script>
+
+</body>
+</html>
+
