@@ -1568,5 +1568,318 @@ hofericacompany@gmail.com
 </script>
 
 
+<!-- KÓD COOKIE LIŠTY S ROZBAĽOVACÍM NASTAVENÍM -->
+<div id="cookieBanner" class="cookie-banner">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <p id="cookieMainText">
+        Naša webová stránka používa súbory cookies na analýzu návštevnosti (Google Analytics) a zlepšenie používateľského zážitku. 
+        Viac informácií nájdete v sekcii <a href="cookies.html">Zásady cookies</a>.
+      </p>
+      
+      <!-- Skryté pole s detailným nastavením, ktoré sa rozbalí -->
+      <div id="cookieSettingsBox" class="cookie-settings-box">
+        <div class="cookie-option">
+          <label class="cookie-checkbox-container">
+            <input type="checkbox" checked disabled>
+            <span class="checkmark disabled-check"></span>
+            <div class="option-desc">
+              <strong>Nevyhnutné cookies (Vždy aktívne)</strong>
+              <p>Potrebné pre technické fungovanie webu a bezpečné odosielanie formulárov.</p>
+            </div>
+          </label>
+        </div>
+        <div class="cookie-option">
+          <label class="cookie-checkbox-container">
+            <input type="checkbox" id="analyticsCheck" checked>
+            <span class="checkmark"></span>
+            <div class="option-desc">
+              <strong>Analytické cookies (Google Analytics)</strong>
+              <p>Anonymne zbierajú informácie o návštevnosti, aby sme mohli zlepšovať stabilitu a obsah webu.</p>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tlačidlá -->
+    <div class="cookie-buttons" id="cookieActionButtons">
+      <button onclick="toggleSettings()" class="btn-cookie btn-settings" id="btnSettingsToggle">Nastaviť cookies</button>
+      <button onclick="acceptAllCookies()" class="btn-cookie btn-accept pulse-button" id="btnMainAction">Prijať</button>
+    </div>
+  </div>
+</div>
+
+<!-- ŠTÝLY PRE ROZBAĽOVACIU COOKIE LIŠTU -->
+<style>
+.cookie-banner {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 2px solid rgba(200, 169, 107, 0.4);
+  padding: 25px 7%;
+  z-index: 99999;
+  transition: bottom 0.5s ease-in-out;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
+}
+.cookie-banner.show {
+  bottom: 0 !important;
+}
+.cookie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+.cookie-text {
+  flex-grow: 1;
+}
+.cookie-content p {
+  color: #e0e0e0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.cookie-content a {
+  color: #c8a96b;
+  text-decoration: none;
+  font-weight: 600;
+}
+.cookie-content a:hover {
+  text-decoration: underline;
+}
+.cookie-buttons {
+  display: flex;
+  gap: 15px;
+  flex-shrink: 0;
+  align-items: center;
+}
+.btn-cookie {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-accept {
+  background: linear-gradient(135deg, #c8a96b, #a38446);
+  border: none;
+  color: #050505;
+  box-shadow: 0 0 15px rgba(200, 169, 107, 0.4);
+}
+.btn-accept:hover {
+  background: linear-gradient(135deg, #f0d8a2, #c8a96b);
+  box-shadow: 0 0 25px rgba(200, 169, 107, 0.7);
+  transform: translateY(-2px);
+}
+.pulse-button {
+  animation: pulseAnimation 2s infinite;
+}
+@keyframes pulseAnimation {
+  0% { box-shadow: 0 0 0 0 rgba(200, 169, 107, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(200, 169, 107, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(200, 169, 107, 0); }
+}
+.btn-settings {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #8c8c8c;
+}
+.btn-settings:hover {
+  border-color: #c8a96b;
+  color: white;
+}
+
+/* DIZAJN PRE ROZBALENÉ CHECKBOXY */
+.cookie-settings-box {
+  display: none;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  flex-direction: column;
+  gap: 15px;
+}
+.cookie-option {
+  display: flex;
+  align-items: flex-start;
+}
+.cookie-checkbox-container {
+  display: flex;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  user-select: none;
+}
+.cookie-checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.cookie-checkbox-container input:checked ~ .checkmark {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.cookie-checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.cookie-checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #050505;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.disabled-check {
+  background-color: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+.disabled-check:after {
+  border-color: rgba(255,255,255,0.4) !important;
+}
+.option-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.option-desc strong {
+  color: white;
+  font-size: 14px;
+}
+.option-desc p {
+  color: #8c8c8c !important;
+  font-size: 12px !important;
+}
+
+/* Responsivita */
+@media (max-width: 768px) {
+  .cookie-content {
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+  }
+  .cookie-buttons {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-cookie {
+    width: 100%;
+  }
+}
+</style>
+
+<!-- JAVASCRIPT LOGIKA PRE SÚHLASY -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+if (!localStorage.getItem("cookieConsent")) {
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied'
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var consent = localStorage.getItem("cookieConsent");
+  if (!consent) {
+    setTimeout(function() {
+      document.getElementById("cookieBanner").classList.add("show");
+    }, 1200);
+  } else {
+    updateConsent(consent === "all" || consent === "analytics_only");
+  }
+});
+
+var isSettingsOpen = false;
+function toggleSettings() {
+  var settingsBox = document.getElementById("cookieSettingsBox");
+  var mainText = document.getElementById("cookieMainText");
+  var btnMain = document.getElementById("btnMainAction");
+  var btnToggle = document.getElementById("btnSettingsToggle");
+
+  if (!isSettingsOpen) {
+    settingsBox.style.display = "flex";
+    mainText.style.display = "none";
+    btnMain.innerHTML = "Uložiť moje nastavenia";
+    btnMain.classList.remove("pulse-button");
+    btnToggle.innerHTML = "Zrušiť";
+    isSettingsOpen = true;
+  } else {
+    settingsBox.style.display = "none";
+    mainText.style.display = "block";
+    btnMain.innerHTML = "Prijať";
+    btnMain.classList.add("pulse-button");
+    btnToggle.innerHTML = "Nastaviť cookies";
+    isSettingsOpen = false;
+  }
+}
+
+function acceptAllCookies() {
+  if (isSettingsOpen) {
+    var isAnalyticsChecked = document.getElementById("analyticsCheck").checked;
+    if (isAnalyticsChecked) {
+      localStorage.setItem("cookieConsent", "analytics_only");
+      updateConsent(true);
+    } else {
+      localStorage.setItem("cookieConsent", "necessary_only");
+      updateConsent(false);
+    }
+  } else {
+    localStorage.setItem("cookieConsent", "all");
+    updateConsent(true);
+  }
+  document.getElementById("cookieBanner").classList.remove("show");
+}
+
+function updateConsent(allowAnalytics) {
+  gtag('consent', 'update', {
+    'analytics_storage': allowAnalytics ? 'granted' : 'denied'
+  });
+
+  if (!window.ga_loaded) {
+    window.ga_loaded = true;
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://googletagmanager.com'; // Nahradiť vaším G-ID
+    document.head.appendChild(gaScript);
+    
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // Nahradiť vaším G-ID
+  }
+}
+</script>
+
+
+    
 </body>
 </html>
